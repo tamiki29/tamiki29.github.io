@@ -9,16 +9,29 @@
 
 /* Custom additions by Tâmi */
 
-#button_cv1{
-    width: 100px;
-    height: 50px;
-    margin: 20px;
+span.text-content {
+  background: rgba(0,0,0,0.5);
+  color: white;
+  cursor: pointer;
+  /* display: table; */
+  height: 100%;
+  width: 100%;
+  left: 0;
+  top: 0;
+  position: absolute;
+  opacity: 0;
 }
-#button_cv2{
-    width: 100px;
-    height: 50px;
-    margin: 20px;
+
+span.text-content span {
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
 }
+
+span.text-content:hover {
+  opacity: 1;
+}
+
 
 /* Reset */
 
@@ -1733,6 +1746,10 @@
 		.image.fit {
 			display: block;
 			width: 100%;
+			position:relative;
+		}
+
+		.image.fit img{
 		}
 
 		.image.featured {
