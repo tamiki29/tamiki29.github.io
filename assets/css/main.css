@@ -35,26 +35,10 @@ span.text-content {
   transition:opacity .2s ease-in-out,right .4s ease-in-out
 }
 
-.text-content a {
+.text-content a, p#nav a {
 	color:#E27689;
 }
 
-/*
-#text-content-link {
-  all: initial;
-  * {
-    all: unset;
-  }
-}
-*/
-
-/*
-span.text-content span {
-  display: table-cell;
-  text-align: center;
-  vertical-align: middle;
-}
-*/
 
 span.text-content:hover {
   opacity: 1;
