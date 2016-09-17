@@ -2329,7 +2329,7 @@ span.text-content:hover {
 		/* Header */
 
 			#header {
-				width: 20%;
+				width: 15%;
 			}
 
 			#logo .image {
@@ -2356,13 +2356,13 @@ span.text-content:hover {
 		/* Footer */
 
 			#footer {
-				margin-left: 20%;
+				margin-left: 15%;
 			}
 
 		/* Main */
 
 			#main {
-				margin-left: 20%;
+				margin-left: 15%;
 			}
 
 	}
