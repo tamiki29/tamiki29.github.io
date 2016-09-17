@@ -35,7 +35,7 @@ span.text-content {
   transition:opacity .2s ease-in-out,right .4s ease-in-out
 }
 
-.text-content a, p#nav a {
+.text-content a, p#nav2 a {
 	color:#E27689;
 }
 
