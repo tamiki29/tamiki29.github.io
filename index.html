@@ -11,7 +11,6 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
 		<link rel="stylesheet" href="assets/css/main.css" />
-		<link rel="stylesheet" href="assets/css/swipebox.css">
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
 		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
 		<script>
@@ -289,52 +288,54 @@
 					<section id="365 homes" class="two">
 					  <div class="container">
 
+							<p id="nav2">
+							<h2>365 Homes</h2>
+								<em> 365 Homes </em> is a photo project that I started in 2011. Being on tour with different shows,
+								I spend a great part of my time away from home, on the road, on planes, in trains and ... in HOTELS!
+								This photographic project is a reflection on my many homes over the last few years:
+								I enter them, I step through, and tomorrow a new home is waiting for me.
+								Each image shows the door of my room followed by the view out of the window.
+							</p>
 
-						<p id="nav2">
-						<h2>365 Homes</h2>
-							<em> 365 Homes </em> is a photo project that I started in 2011. Being on tour with different shows,
-							I spend a great part of my time away from home, on the road, on planes, in trains and ... in HOTELS!
-							This photographic project is a reflection on my many homes over the last few years:
-							I enter them, I step through, and tomorrow a new home is waiting for me.
-							Each image shows the door of my room followed by the view out of the window.
-						</p>
+							<div class="row">
 
+								<div class="4u 12u$(mobile)">
+									<article class="item">
+										<div class="image fit">
+											<img src="images/365 homes/full/angouleme juillet 2015.jpg" alt="image">
+										</div>
+										<header>
+											<h3>Angoulème July 2015</h3>
+										</header>
+									</article>
+								</div>
 
-					  <div class="image fit">
-							<div id="try"></div>
-							<ul id="box-container">
-								<li class="box">
-									<a href="images/365 homes/full/angouleme juillet 2015.jpg" class="swipebox" title="Angoulème July 2015">
-										<img src="images/365 homes/full/angouleme juillet 2015.jpg" alt="image">
-									</a>
-								</li>
-								<li class="box">
-									<a href="images/365 homes/full/bruges mars 2017.jpg" class="swipebox" title="Bruges March 2017">
-										<img src="images/365 homes/full/bruges mars 2017.jpg" alt="image">
-									</a>
-								</li>
-								<li class="box">
-									<a href="images/365 homes/full/constantine jan 2013.jpg" class="swipebox" title="Constantine January 2013">
-										<img src="images/365 homes/full/constantine jan 2013.jpg" alt="image">
-									</a>
-								</li>
-								<li class="box">
-									<a href="images/365 homes/full/charleroi avril 2016.jpg" class="swipebox" title="Charleroi April 2016">
-										<img src="images/365 homes/full/charleroi avril 2016.jpg" alt="image">
-									</a>
-								</li>
-								<li class="box">
-									<a href="images/365 homes/full/carcassonne feb 2014.jpg" class="swipebox" title="Carcassonne February 2014">
-										<img src="images/365 homes/full/carcassonne feb 2014.jpg" alt="image">
-									</a>
-								</li>
-								<li class="box">
-									<a href="images/365 homes/full/tokyo mai 2016.jpg" class="swipebox" title="Tokyo Mai 2016">
-										<img src="images/365 homes/full/tokyo mai 2016.jpg" alt="image">
-									</a>
-								</li>
-							</ul>
-						</div>
+								<div class="4u 12u$(mobile)">
+									<article class="item">
+										<div class="image fit">
+											<img src="images/365 homes/full/bruges mars 2017.jpg" alt="image">
+										</div>
+										<header>
+											<h3>Bruges March 2017</h3>
+										</header>
+									</article>
+								</div>
+
+								<div class="4u 12u$(mobile)">
+									<article class="item">
+										<div class="image fit">
+											<a href="365homes.html">
+												<img src="images/365 homes/full/constantine jan 2013.jpg" alt="image">
+											</a>
+										</div>
+										<header>
+											<h3>Constantine January 2013</h3>
+										</header>
+									</article>
+								</div>
+
+							</div>
+
 					  </div>
 					</section>
 
@@ -427,29 +428,5 @@
 <!--
 			<script src="assets/js/language.js"></script>
 -->
-			<script src="assets/js/jquery.swipebox.js"></script>
-			<script type="text/javascript">
-			$( document ).ready(function() {
-
-					/* Basic Gallery */
-					$( '.swipebox' ).swipebox({
-						loopAtEnd: true
-					}
-					);
-
-					/* Video */
-					$( '.swipebox-video' ).swipebox();
-
-					/* Dynamic Gallery */
-					$( '#gallery' ).click( function( e ) {
-						e.preventDefault();
-						$.swipebox( [
-							{ href : 'http://swipebox.csag.co/mages/image-1.jpg', title : 'My Caption' },
-							{ href : 'http://swipebox.csag.co/images/image-2.jpg', title : 'My Second Caption' }
-						] );
-					} );
-
-			  });
-			</script>
 	</body>
 </html>
