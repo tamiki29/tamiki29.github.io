@@ -22,6 +22,7 @@ fout = open(outpath, "w+")
 for filename in os.listdir(directory):
     if filename.endswith(".jpg") or filename.endswith(".jpeg") or filename.endswith(".JPG") or filename.endswith(".JPEG"):
         basename, extension = splitext(filename)
+        basename = basename.lstrip('0123456789.- ')
         fout.write (   "<div class=\"4u 12u$(mobile)\">" + "\n" + \
         			   "     <article class=\"item\">" + "\n" + \
         			   "        <div class=\"image fit\">" + "\n" + \
