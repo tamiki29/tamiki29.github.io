@@ -7,8 +7,8 @@
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 */
 
-/* 
-	Custom additions by Tâmi 
+/*
+	Custom additions by Tâmi
 	Using code from:
 		- http://geekgirllife.com/place-text-over-images-on-hover-without-javascript/
 */
@@ -4560,7 +4560,7 @@ span.text-content:hover {
 			}
 
 			#main > section.one {
-				background-color: #81918E;
+				background-color: #000000;
 				background-image: url("../../images/banner.jpg");
 			}
 
