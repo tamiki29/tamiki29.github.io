@@ -352,6 +352,34 @@
 
 							});
 
+		// Header (narrower + mobile).
+
+			// Toggle.
+				$(
+					'<div id="headerToggle">' +
+						'<a href="#header" class="toggle"></a>' +
+					'</div>'
+				)
+					.appendTo($body);
+
+			// Header.
+				$('#header')
+					.panel({
+						delay: 500,
+						hideOnClick: true,
+						hideOnSwipe: true,
+						resetScroll: true,
+						resetForms: true,
+						side: 'left',
+						target: $body,
+						visibleClass: 'header-visible'
+					});
+
+			// Fix: Remove transitions on WP<10 (poor/buggy performance).
+				if (skel.vars.os == 'wp' && skel.vars.osVersion < 10)
+					$('#headerToggle, #header, #main')
+						.css('transition', 'none');
+
 	});
 
 })(jQuery);
