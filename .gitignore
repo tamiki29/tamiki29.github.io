@@ -1,4 +1,6 @@
+.psd
 # Ignore DropBox files
 /.dropbox
 /Icon?
 /Icon\r
+.DS_Store
