@@ -1,0 +1,469 @@
+<!DOCTYPE HTML>
+<!--
+	Story by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html lang="en-US">
+
+<head>
+	<title>Kim Huynh - Jonglage - Danse</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+	<link rel="stylesheet" href="assets/css/main.css" />
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/"
+	 crossorigin="anonymous">
+	<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+	<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+	<script>
+		(function (i, s, o, g, r, a, m) {
+			i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+				(i[r].q = i[r].q || []).push(arguments)
+			}, i[r].l = 1 * new Date(); a = s.createElement(o),
+				m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+		})(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+		ga('create', 'UA-84358614-1', 'auto');
+		ga('send', 'pageview');
+
+	</script>
+
+	<!-- Map Resources -->
+	<script src="https://www.amcharts.com/lib/4/core.js"></script>
+	<script src="https://www.amcharts.com/lib/4/maps.js"></script>
+	<script src="https://www.amcharts.com/lib/4/geodata/worldLow.js"></script>
+	<script src="https://www.amcharts.com/lib/4/themes/animated.js"></script>
+
+	<!-- Styles -->
+	<style>
+		#chartdiv {
+			width: 100%;
+			height: 1000px;
+		}
+	</style>
+
+</head>
+
+<body>
+
+	<!-- Header -->
+	<div id="header">
+
+		<div class="top">
+
+			<!-- Logo -->
+			<div id="logo">
+				<span class="image avatar48"><img src="images/kimi_square.jpg" alt="" /></span>
+				<h1 id="title">Kim Huynh</h1>
+				<p>Jonglage - Danse</p>
+			</div>
+
+			<!-- Nav -->
+			<nav id="nav">
+				<ul>
+					<li><a href="index.html" id="top-link" class="skel-layers-ignoreHref"><span class="icon fa-home">Home</span></a></li>
+					<li><a href="index.html#portfolio" id="portfolio-link" class="skel-layers-ignoreHref"><span class="icon fa-magic">Shows</span></a></li>
+					<li><a href="365homes.html" id="365-homes-link" class="skel-layers-ignoreHref"><span class="icon fa-igloo">365
+								Homes</span></a></li>
+					<li><a href="travelnote.html" id="travel notebooks-link" class="skel-layers-ignoreHref"><span class="icon fa-globe-americas">Travelnote</span></a></li>
+					<li><a href="map-2018.html" id="map-2018-link" class="skel-layers-ignoreHref active"><span class="icon fa-plane">2018</span></a></li>
+					<!--
+					<li><a href="#about" id="about-link" class="skel-layers-ignoreHref"><span class="icon fa-user">About Me</span></a></li>
+				-->
+					<li><a href="index.html#contact" id="contact-link" class="skel-layers-ignoreHref"><span class="icon fa-envelope">Contact</span></a></li>
+				</ul>
+			</nav>
+
+		</div>
+		<div class="bottom">
+			<ul class="icons">
+				<li><a href="https://www.facebook.com/kim.huynh.1614460"><span style="font-size: 1.25em; color: #41484c;" class="fab fa-facebook"></span></a></li>
+			</ul>
+		</div>
+
+	</div>
+
+	<!-- Main -->
+
+	<!-- HTML -->
+	<div id="main">
+		<section id="map-2018" class="two">
+			<!-- <div class="container"> -->
+			<div id="chartdiv"></div>
+			<!-- </div> -->
+		</section>
+	</div>
+
+	<!-- Footer -->
+	<!-- <div id="footer">
+
+		<ul class="copyright">
+			<li>&copy;
+				<script type="text/javascript">
+					document.write(new Date().getFullYear());
+				</script>
+				Kim Huynh
+			</li>
+			<li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+		</ul>
+		<br>
+	</div> -->
+
+
+	<!-- Scripts -->
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/jquery.scrollex.min.js"></script>
+	<script src="assets/js/jquery.scrolly.min.js"></script>
+	<script src="assets/js/skel.min.js"></script>
+	<script src="assets/js/util.js"></script>
+	<script src="assets/js/main2.js"></script>
+
+	<!-- Map code courtesy https://www.amcharts.com/demos/animations-along-lines/#code -->
+	<script>
+		// Themes begin
+		am4core.useTheme(am4themes_animated);
+		// Themes end
+
+		// Create map instance
+		var chart = am4core.create("chartdiv", am4maps.MapChart);
+		chart.geodata = am4geodata_worldLow;
+		chart.projection = new am4maps.projections.Miller();
+		chart.homeZoomLevel = 2.5;
+		chart.homeGeoPoint = {
+			latitude: 38,
+			longitude: -60
+		};
+
+		// Create map polygon series
+		var polygonSeries = chart.series.push(new am4maps.MapPolygonSeries());
+		polygonSeries.useGeodata = true;
+		polygonSeries.mapPolygons.template.fill = chart.colors.getIndex(0).lighten(0.5);
+		polygonSeries.exclude = ["AQ"];
+
+		// Add line bullets
+		var cities = chart.series.push(new am4maps.MapImageSeries());
+		cities.mapImages.template.nonScaling = true;
+
+		var city = cities.mapImages.template.createChild(am4core.Circle);
+		city.radius = 6;
+		// city.fill = chart.colors.getIndex(0).brighten(-0.2);
+		city.fill = am4core.color("#e27689");
+		city.strokeWidth = 2;
+		city.stroke = am4core.color("#fff");
+
+		function addCity(coords, title) {
+			var city = cities.mapImages.create();
+			city.latitude = coords.latitude;
+			city.longitude = coords.longitude;
+			city.tooltipText = title;
+			return city;
+		}
+
+		// var paris = addCity({ "latitude": 48.8567, "longitude": 2.3510 }, "Paris");
+		// var toronto = addCity({ "latitude": 43.8163, "longitude": -79.4287 }, "Toronto");
+		// var la = addCity({ "latitude": 34.3, "longitude": -118.15 }, "Los Angeles");
+		// var havana = addCity({ "latitude": 23, "longitude": -82 }, "Havana");
+
+		// Add lines
+		var lineSeries = chart.series.push(new am4maps.MapArcSeries());
+		lineSeries.mapLines.template.line.strokeWidth = 2;
+		lineSeries.mapLines.template.line.strokeOpacity = 0.5;
+		lineSeries.mapLines.template.line.stroke = city.fill;
+		lineSeries.mapLines.template.line.nonScalingStroke = true;
+		lineSeries.mapLines.template.line.strokeDasharray = "1,1";
+		lineSeries.zIndex = 10;
+
+		var shadowLineSeries = chart.series.push(new am4maps.MapLineSeries());
+		shadowLineSeries.mapLines.template.line.strokeOpacity = 0;
+		shadowLineSeries.mapLines.template.line.nonScalingStroke = true;
+		shadowLineSeries.mapLines.template.shortestDistance = false;
+		shadowLineSeries.zIndex = 5;
+
+		function addLine(from, to) {
+			var line = lineSeries.mapLines.create();
+			line.imagesToConnect = [from, to];
+			line.line.controlPointDistance = -0.3;
+
+			var shadowLine = shadowLineSeries.mapLines.create();
+			shadowLine.imagesToConnect = [from, to];
+
+			return line;
+		}
+
+		var city_1 = addCity({ "latitude": 51.4815584, "longitude": -0.0264139 }, "Deptford");
+		var city_2 = addCity({ "latitude": 52.486243, "longitude": -1.890401 }, "Birmingham");
+		addLine(city_1, city_2);
+		var city_3 = addCity({ "latitude": 48.886112, "longitude": 2.435048 }, "Romainville");
+		addLine(city_2, city_3);
+		var city_4 = addCity({ "latitude": 50.71505, "longitude": -1.987248 }, "Poole");
+		addLine(city_3, city_4);
+		var city_5 = addCity({ "latitude": 48.746318, "longitude": 2.266838 }, "Verrières Le Buisson");
+		addLine(city_4, city_5);
+		var city_6 = addCity({ "latitude": 48.886112, "longitude": 2.435048 }, "Romainville");
+		addLine(city_5, city_6);
+		var city_7 = addCity({ "latitude": 52.205337, "longitude": 0.121817 }, "Cambridge");
+		addLine(city_6, city_7);
+		var city_8 = addCity({ "latitude": 48.529171, "longitude": 2.0152549 }, "Dourdan");
+		addLine(city_7, city_8);
+		var city_9 = addCity({ "latitude": 47.931513, "longitude": 1.920754 }, "Fleury les Aubrais");
+		addLine(city_8, city_9);
+		var city_10 = addCity({ "latitude": 46.5088127, "longitude": 6.4961301 }, "Morges");
+		addLine(city_9, city_10);
+		var city_11 = addCity({ "latitude": 48.886112, "longitude": 2.435048 }, "Romainville");
+		addLine(city_10, city_11);
+		var city_12 = addCity({ "latitude": 48.782907, "longitude": 1.960077 }, "Elancourt");
+		addLine(city_11, city_12);
+		var city_13 = addCity({ "latitude": 48.886112, "longitude": 2.435048 }, "Romainville");
+		addLine(city_12, city_13);
+		var city_14 = addCity({ "latitude": 48.911856, "longitude": 2.333764 }, "St. Ouen");
+		addLine(city_13, city_14);
+		var city_15 = addCity({ "latitude": 53.4709479, "longitude": -2.2938968 }, "Salford Quays");
+		addLine(city_14, city_15);
+		var city_16 = addCity({ "latitude": 48.886112, "longitude": 2.435048 }, "Romainville");
+		addLine(city_15, city_16);
+		var city_17 = addCity({ "latitude": 49.815273, "longitude": 6.129583 }, "Luxembourg");
+		addLine(city_16, city_17);
+		var city_18 = addCity({ "latitude": 48.886112, "longitude": 2.435048 }, "Romainville");
+		addLine(city_17, city_18);
+		var city_19 = addCity({ "latitude": 48.52854, "longitude": 7.711011 }, "Illkirch");
+		addLine(city_18, city_19);
+		var city_20 = addCity({ "latitude": 48.886112, "longitude": 2.435048 }, "Romainville");
+		addLine(city_19, city_20);
+		var city_21 = addCity({ "latitude": 48.194668, "longitude": 7.319091 }, "Ribeauvillé");
+		addLine(city_20, city_21);
+		var city_22 = addCity({ "latitude": 48.886112, "longitude": 2.435048 }, "Romainville");
+		addLine(city_21, city_22);
+		var city_23 = addCity({ "latitude": 51.5073509, "longitude": -0.1277583 }, "London");
+		addLine(city_22, city_23);
+		var city_24 = addCity({ "latitude": 51.5073509, "longitude": -0.1277583 }, "London");
+		addLine(city_23, city_24);
+		var city_25 = addCity({ "latitude": 48.886112, "longitude": 2.435048 }, "Romainville");
+		addLine(city_24, city_25);
+		var city_26 = addCity({ "latitude": 49.443232, "longitude": 1.099971 }, "Rouen");
+		addLine(city_25, city_26);
+		var city_27 = addCity({ "latitude": 48.886112, "longitude": 2.435048 }, "Romainville");
+		addLine(city_26, city_27);
+		var city_28 = addCity({ "latitude": 53.2274968, "longitude": -4.1300684 }, "Pontio Wales");
+		addLine(city_27, city_28);
+		var city_29 = addCity({ "latitude": 52.6308859, "longitude": 1.297355 }, "Norwich Norfolk");
+		addLine(city_28, city_29);
+		var city_30 = addCity({ "latitude": 48.886112, "longitude": 2.435048 }, "Romainville");
+		addLine(city_29, city_30);
+		var city_31 = addCity({ "latitude": 51.7520209, "longitude": -1.2577263 }, "Oxford");
+		addLine(city_30, city_31);
+		var city_32 = addCity({ "latitude": 48.886112, "longitude": 2.435048 }, "Romainville");
+		addLine(city_31, city_32);
+		var city_33 = addCity({ "latitude": 13.7563309, "longitude": 100.5017651 }, "Bangkok");
+		addLine(city_32, city_33);
+		var city_34 = addCity({ "latitude": 48.886112, "longitude": 2.435048 }, "Romainville");
+		addLine(city_33, city_34);
+		var city_35 = addCity({ "latitude": 45.439695, "longitude": 4.3871779 }, "Saint-Etienne");
+		addLine(city_34, city_35);
+		var city_36 = addCity({ "latitude": 48.886112, "longitude": 2.435048 }, "Romainville");
+		addLine(city_35, city_36);
+		var city_37 = addCity({ "latitude": 28.1235459, "longitude": -15.4362574 }, "Las Palmas de Gran Canaria");
+		addLine(city_36, city_37);
+		var city_38 = addCity({ "latitude": 48.886112, "longitude": 2.435048 }, "Romainville");
+		addLine(city_37, city_38);
+		var city_39 = addCity({ "latitude": 51.0543422, "longitude": 3.7174243 }, "Ghent");
+		addLine(city_38, city_39);
+		var city_40 = addCity({ "latitude": 48.886112, "longitude": 2.435048 }, "Romainville");
+		addLine(city_39, city_40);
+		var city_41 = addCity({ "latitude": 51.5073509, "longitude": -0.1277583 }, "London");
+		addLine(city_40, city_41);
+		var city_42 = addCity({ "latitude": 51.486073, "longitude": -0.3101169 }, "Brentford");
+		addLine(city_41, city_42);
+		var city_43 = addCity({ "latitude": 48.886112, "longitude": 2.435048 }, "Romainville");
+		addLine(city_42, city_43);
+		var city_44 = addCity({ "latitude": 59.9342802, "longitude": 30.3350986 }, "St. Petersburg");
+		addLine(city_43, city_44);
+		var city_45 = addCity({ "latitude": 48.886112, "longitude": 2.435048 }, "Romainville");
+		addLine(city_44, city_45);
+		var city_46 = addCity({ "latitude": 53.7456709, "longitude": -0.3367413 }, "Hull");
+		addLine(city_45, city_46);
+		var city_47 = addCity({ "latitude": 48.886112, "longitude": 2.435048 }, "Romainville");
+		addLine(city_46, city_47);
+		var city_48 = addCity({ "latitude": 53.8007554, "longitude": -1.5490774 }, "Leeds");
+		addLine(city_47, city_48);
+		var city_49 = addCity({ "latitude": 53.72702, "longitude": -1.85754 }, "Halifax");
+		addLine(city_48, city_49);
+		var city_50 = addCity({ "latitude": 48.886112, "longitude": 2.435048 }, "Romainville");
+		addLine(city_49, city_50);
+		var city_51 = addCity({ "latitude": 51.4815584, "longitude": -0.0264139 }, "Deptford");
+		addLine(city_50, city_51);
+		var city_52 = addCity({ "latitude": 48.886112, "longitude": 2.435048 }, "Romainville");
+		addLine(city_51, city_52);
+		var city_53 = addCity({ "latitude": 51.0459248, "longitude": 7.0192196 }, "Leverkusen");
+		addLine(city_52, city_53);
+		var city_54 = addCity({ "latitude": 48.886112, "longitude": 2.435048 }, "Romainville");
+		addLine(city_53, city_54);
+		var city_55 = addCity({ "latitude": 51.979074, "longitude": -0.226624 }, "Letchworth Garden City");
+		addLine(city_54, city_55);
+		var city_56 = addCity({ "latitude": 48.886112, "longitude": 2.435048 }, "Romainville");
+		addLine(city_55, city_56);
+		var city_57 = addCity({ "latitude": 48.856614, "longitude": 2.3522219 }, "Paris");
+		addLine(city_56, city_57);
+		var city_58 = addCity({ "latitude": 48.886112, "longitude": 2.435048 }, "Romainville");
+		addLine(city_57, city_58);
+		var city_59 = addCity({ "latitude": 43.3623436, "longitude": -8.4115401 }, "A Coruna");
+		addLine(city_58, city_59);
+		var city_60 = addCity({ "latitude": 48.886112, "longitude": 2.435048 }, "Romainville");
+		addLine(city_59, city_60);
+		var city_61 = addCity({ "latitude": 53.55263, "longitude": -1.479726 }, "Barnsley");
+		addLine(city_60, city_61);
+		var city_62 = addCity({ "latitude": 48.886112, "longitude": 2.435048 }, "Romainville");
+		addLine(city_61, city_62);
+		var city_63 = addCity({ "latitude": 50.71505, "longitude": -1.987248 }, "Poole");
+		addLine(city_62, city_63);
+		var city_64 = addCity({ "latitude": 48.886112, "longitude": 2.435048 }, "Romainville");
+		addLine(city_63, city_64);
+		var city_65 = addCity({ "latitude": -21.115141, "longitude": 55.536384 }, "Ile de la Réunion");
+		addLine(city_64, city_65);
+		var city_66 = addCity({ "latitude": 48.886112, "longitude": 2.435048 }, "Romainville");
+		addLine(city_65, city_66);
+		var city_67 = addCity({ "latitude": 45.1437329, "longitude": 7.6232892 }, "Venaria Reale");
+		addLine(city_66, city_67);
+		var city_68 = addCity({ "latitude": 48.886112, "longitude": 2.435048 }, "Romainville");
+		addLine(city_67, city_68);
+		var city_69 = addCity({ "latitude": 53.4709479, "longitude": -2.2938968 }, "Salford Quays");
+		addLine(city_68, city_69);
+		var city_70 = addCity({ "latitude": 48.886112, "longitude": 2.435048 }, "Romainville");
+		addLine(city_69, city_70);
+		var city_71 = addCity({ "latitude": 52.9225301, "longitude": -1.4746186 }, "Derby");
+		addLine(city_70, city_71);
+		var city_72 = addCity({ "latitude": 48.9320252, "longitude": 2.3990819 }, "La Corneuve");
+		addLine(city_71, city_72);
+		var city_73 = addCity({ "latitude": 46.2043907, "longitude": 6.1431577 }, "Genève");
+		addLine(city_72, city_73);
+		var city_74 = addCity({ "latitude": 48.886112, "longitude": 2.435048 }, "Romainville");
+		addLine(city_73, city_74);
+		var city_75 = addCity({ "latitude": 45.831268, "longitude": 3.100247 }, "Cébazat");
+		addLine(city_74, city_75);
+		var city_76 = addCity({ "latitude": 48.886112, "longitude": 2.435048 }, "Romainville");
+		addLine(city_75, city_76);
+		var city_77 = addCity({ "latitude": 54.046575, "longitude": -2.8007399 }, "Lancaster");
+		addLine(city_76, city_77);
+		var city_78 = addCity({ "latitude": 48.886112, "longitude": 2.435048 }, "Romainville");
+		addLine(city_77, city_78);
+		var city_79 = addCity({ "latitude": 40.8259007, "longitude": -74.2090053 }, "Montclair");
+		addLine(city_78, city_79);
+		var city_80 = addCity({ "latitude": 48.886112, "longitude": 2.435048 }, "Romainville");
+		addLine(city_79, city_80);
+		var city_81 = addCity({ "latitude": 22.396428, "longitude": 114.109497 }, "Hong Kong");
+		addLine(city_80, city_81);
+		var city_82 = addCity({ "latitude": 48.886112, "longitude": 2.435048 }, "Romainville");
+		addLine(city_81, city_82);
+		var city_83 = addCity({ "latitude": 47.6169191, "longitude": 7.6709248 }, "Lörrach");
+		addLine(city_82, city_83);
+
+		// Add plane
+		var plane = lineSeries.mapLines.getIndex(0).lineObjects.create();
+		plane.position = 0;
+		plane.width = 48;
+		plane.height = 48;
+
+		plane.adapter.add("scale", (scale, target) => {
+			return 0.5 * (1 - (Math.abs(0.5 - target.position)));
+		})
+
+		var planeImage = plane.createChild(am4core.Sprite);
+		planeImage.scale = 0.08;
+		planeImage.horizontalCenter = "middle";
+		planeImage.verticalCenter = "middle";
+		planeImage.path = "m2,106h28l24,30h72l-44,-133h35l80,132h98c21,0 21,34 0,34l-98,0 -80,134h-35l43,-133h-71l-24,30h-28l15,-47";
+		planeImage.fill = chart.colors.getIndex(2).brighten(-0.2);
+		planeImage.strokeOpacity = 0;
+
+		var shadowPlane = shadowLineSeries.mapLines.getIndex(0).lineObjects.create();
+		shadowPlane.position = 0;
+		shadowPlane.width = 48;
+		shadowPlane.height = 48;
+
+		var shadowPlaneImage = shadowPlane.createChild(am4core.Sprite);
+		shadowPlaneImage.scale = 0.05;
+		shadowPlaneImage.horizontalCenter = "middle";
+		shadowPlaneImage.verticalCenter = "middle";
+		shadowPlaneImage.path = "m2,106h28l24,30h72l-44,-133h35l80,132h98c21,0 21,34 0,34l-98,0 -80,134h-35l43,-133h-71l-24,30h-28l15,-47";
+		shadowPlaneImage.fill = am4core.color("#000");
+		shadowPlaneImage.strokeOpacity = 0;
+
+		shadowPlane.adapter.add("scale", (scale, target) => {
+			target.opacity = (0.6 - (Math.abs(0.5 - target.position)));
+			return 0.5 - 0.3 * (1 - (Math.abs(0.5 - target.position)));
+		})
+
+		// Plane animation
+		var currentLine = 0;
+		var direction = 1;
+		function flyPlane() {
+
+			// Get current line to attach plane to
+			plane.mapLine = lineSeries.mapLines.getIndex(currentLine);
+			plane.parent = lineSeries;
+			shadowPlane.mapLine = shadowLineSeries.mapLines.getIndex(currentLine);
+			shadowPlane.parent = shadowLineSeries;
+			shadowPlaneImage.rotation = planeImage.rotation;
+
+			// Set up animation
+			var from, to;
+			var numLines = lineSeries.mapLines.length;
+			if (direction == 1) {
+				from = 0
+				to = 1;
+				if (planeImage.rotation != 0) {
+					planeImage.animate({ to: 0, property: "rotation" }, 1000).events.on("animationended", flyPlane);
+					return;
+				}
+			}
+			else {
+				from = 1;
+				to = 0;
+				if (planeImage.rotation != 180) {
+					planeImage.animate({ to: 180, property: "rotation" }, 1000).events.on("animationended", flyPlane);
+					return;
+				}
+			}
+
+			// Start the animation
+			var animation = plane.animate({
+				from: from,
+				to: to,
+				property: "position"
+			}, 5000, am4core.ease.sinInOut);
+			animation.events.on("animationended", flyPlane)
+			/*animation.events.on("animationprogress", function(ev) {
+			  var progress = Math.abs(ev.progress - 0.5);
+			  //console.log(progress);
+			  //planeImage.scale += 0.2;
+			});*/
+
+			shadowPlane.animate({
+				from: from,
+				to: to,
+				property: "position"
+			}, 5000, am4core.ease.sinInOut);
+
+			// Increment line, or reverse the direction
+			currentLine += direction;
+			if (currentLine < 0) {
+				currentLine = 0;
+				direction = 1;
+			}
+			else if ((currentLine + 1) > numLines) {
+				currentLine = numLines - 1;
+				direction = -1;
+			}
+
+		}
+
+		// Go!
+		flyPlane();
+	</script>
+
+
+
+</body>
+
+
+</html>
