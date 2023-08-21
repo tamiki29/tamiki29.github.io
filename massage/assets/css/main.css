@@ -159,7 +159,11 @@ input, select, textarea {
 		line-height: 1em;
 		margin: 0 0 1em 0;
 		text-transform: uppercase;
-		font-family:lucida handwriting;  
+		
+		
+    font-family: 'Lucida Handwriting';
+    src: url("massage/assets/lucidafont/LucidaHandwritRegular.ttf") format('truetype');
+}  
 	}
 
 		h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
