@@ -14,6 +14,36 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="stylesheet" href="assets/css/styles.css" />
+
+   <style>
+        .image-gallery {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .image-zoom {
+            flex: 1;
+            overflow: visible;
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+
+        .image-zoom img {
+            display: block;
+            max-width: 100%;
+            height: auto;
+			 position: relative;
+        }
+
+        .image-zoom:hover img {
+            transform: scale(2.0); /* Zoom à ajuster ici */
+	         z-index: 1;
+		}
+    </style>
+		
+		
+		
 	</head>
 	<body class="is-preload">
 
@@ -49,7 +79,7 @@
 						<h5> <p align="left"><strong>
 							Massage Abhyanga</strong></h5>
 						<p>
-							<span class="image right"><img src="images/oilhand1.jpg" alt="" /></span>
+							<span class="image right"><img src="images/.jpg" alt="" /></span>
 						<p align="left">
 							Massage indien à l'huile de sésame chaude.</br>
 								
@@ -100,17 +130,39 @@
 						
 						<p>
 							<p align="left">
-								Passionnée de massage depuis longtemps, j'ai toujours été intriguée par la manière dont le toucher peut révéler la sensibilité du corps. </br>
-						Mon intérêt pour cet art du bien-être s'est développé au fil des années, tout en étant nourri par mon expérience en tant que danseuse et jongleuse.</br></br>
+								Passionnée de massages depuis longtemps, j'ai toujours été intriguée par la manière 
+								dont le toucher peut révéler la sensibilité du corps. </br>
+								Mon intérêt pour cet art du bien-être s'est développé au fil des années,
+						tout en étant nourri par mon expérience en tant que danseuse et jongleuse.</br></br>
+
+						J'ai eu la chance de me former en Thaïlande à l'école renommée de massage traditionnel Wat Po, 
+						à Sunshine School à Chiang Mai et à Paris (Art du Toucher/Shizen School) 
+						où j'ai acquis des compétences précieuses dans l'art du massage.</br>
+
+						Mon outil de travail a toujours été mon corps, et c'est à travers cette connexion profonde que
+						je me sens particulièrement apte à offrir des soins de bien-être.</br></br>
+
+						Mon objectif est de créer un espace où le corps et l'esprit se réconcilient, 
+						où chaque touche devient une expression de bienveillance et d'attention, 
+						où chaque geste devient une subtile danse des mains, 
+						offrant ainsi des moments de détente et de soulagement. </p>
 						
-							J'ai eu la chance de me former en Thaïlande à l'école rénommée de massage traditionnelle Wat Po, à Sunshine massage school à Chiang Mai et à Paris (Art du toucher) 
-						où j'ai acquis des compétences précieuses dans l'art du massage.</br></br>
-							Mon outil de travail a toujours été mon corps, et c'est à travers cette connexion profonde que je me sens particulièrement apte à offrir des soins de bien - être.  
-							Mon objectif est de créer un espace où le corps et l'esprit se réconcilient, où chaque touche devient une expression de bienveillance et d'attention, offrant ainsi des moments de détente et de soulagement. </p>
-						
-					<span class="image fit"><img src="images/all3.jpg" alt="" /></span>
+				
 				
 					</div>
+<div class="image-gallery">
+    <div class="image-zoom">
+        <img src="images/certif1.jpg" alt="Image 1" />
+    </div>
+    <div class="image-zoom">
+        <img src="images/certif2.jpg" alt="Image 2" />
+    </div>
+    <div class="image-zoom">
+        <img src="images/certif3.jpg" alt="Image 3" />
+    </div>
+</div>
+					
+
 					<a href="#two" class="goto-next scrolly">Next</a>
 				</div>
 			</section>

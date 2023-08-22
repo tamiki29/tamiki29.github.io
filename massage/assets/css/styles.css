@@ -18,3 +18,21 @@
     border-radius: 5px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
 }
+
+.image-zoom {
+    display: inline-block;
+    overflow: hidden;
+    position: relative;
+    transition: transform 0.3s ease;
+}
+
+.image-zoom img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+.image-zoom:hover img {
+    transform: scale(1.7); /* Zoom de 10% */
+}
+
