@@ -1,6 +1,6 @@
 @import url("fontawesome-all.min.css");
 @import url("https://fonts.googleapis.com/css?family=Raleway:400,400italic,700,800");
-
+ 
 /*
 	Highlights by HTML5 UP
 	html5up.net | @ajlkn
@@ -160,10 +160,7 @@ input, select, textarea {
 		margin: 0 0 1em 0;
 		text-transform: uppercase;
 		
-		
-    font-family: 'Lucida Handwriting';
-    src: url("massage/assets/lucidafont/LucidaHandwritRegular.ttf") format('truetype');
-}  
+   }  
 	}
 
 		h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
